@@ -22,7 +22,7 @@ export default memo(() => {
   const navigate = useNavigate();
 
   const gotoWiki = () => {
-    window.open('https://github.com/arunike');
+    window.open('https://docs.google.com/document/d/1Agm1aaQD4c1zqJwlJgBnIhYMeeniRpNd/edit?mode=html');
   };
 
   const gotoGitHub = () => {
