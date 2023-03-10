@@ -3,6 +3,10 @@ import { BrowserRouterProps } from 'react-router-dom';
 import dashboard from './modules/dashboard';
 import user from './modules/user';
 import login from './modules/login';
+import feeder from './modules/feeder';
+import setting from './modules/setting';
+import model from './modules/model';
+import home from './modules/home';
 import otherRoutes from './modules/others';
 
 export interface IRouter {
@@ -34,6 +38,6 @@ const routes: IRouter[] = [
   },
 ];
 
-const allRoutes = [...routes, ...dashboard, ...user, ...login, ...otherRoutes];
+const allRoutes = [...routes, ...home, ...dashboard, ...user, ...feeder, ...model, ...setting, ...login, ...otherRoutes];
 
 export default allRoutes;

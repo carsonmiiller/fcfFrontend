@@ -1,10 +1,9 @@
 import React, { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Popup, Badge, Dropdown, Row, Col } from 'tdesign-react';
+import { Button, Popup, Dropdown, Row, Col } from 'tdesign-react';
 import {
   Icon,
   LogoGithubIcon,
-  MailIcon,
   HelpCircleIcon,
   SettingIcon,
   PoweroffIcon,
