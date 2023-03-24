@@ -11,11 +11,11 @@ export default function Header() {
   const dispatch = useAppDispatch();
 
   const navToGitHub = () => {
-    window.open('https://git.doit.wisc.edu/cdis/cs/courses/cs506/sp2023/l2_38e');
+    window.open('https://github.com/arunike');
   };
 
   const navToHelper = () => {
-    window.open('https://git.doit.wisc.edu/cdis/cs/courses/cs506/sp2023/l2_38');
+    window.open('https://github.com/arunike');
   };
 
   const toggleSettingPanel = () => {

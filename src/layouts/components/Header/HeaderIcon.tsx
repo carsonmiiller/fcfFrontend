@@ -22,11 +22,11 @@ export default memo(() => {
   const navigate = useNavigate();
 
   const gotoWiki = () => {
-    window.open('https://git.doit.wisc.edu/cdis/cs/courses/cs506/sp2023/l2_38');
+    window.open('https://github.com/arunike');
   };
 
   const gotoGitHub = () => {
-    window.open('https://git.doit.wisc.edu/cdis/cs/courses/cs506/sp2023/l2_38');
+    window.open('https://github.com/arunike');
   };
 
   const clickHandler = (data: any) => {
