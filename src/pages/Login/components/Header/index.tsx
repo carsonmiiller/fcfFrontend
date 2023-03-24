@@ -15,7 +15,7 @@ export default function Header() {
   };
 
   const navToHelper = () => {
-    window.open('https://docs.google.com/document/d/1Agm1aaQD4c1zqJwlJgBnIhYMeeniRpNd/edit?mode=html');
+    window.open('https://github.com/arunike');
   };
 
   const toggleSettingPanel = () => {

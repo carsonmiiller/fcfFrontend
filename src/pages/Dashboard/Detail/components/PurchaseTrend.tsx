@@ -74,7 +74,7 @@ const PurchaseTrend = () => {
   return (
     <Row className={Style.purchaseTrendPanel} gutter={[16, 16]}>
       <Col xs={12} xl={9}>
-        <Card title='Sourcing commodity application trends' subtitle='(pcs)' actions={LastWeekDatePicker(onTimeChange)} header>
+        <Card title='Sourcing commodity application trends' subtitle='(件)' actions={LastWeekDatePicker(onTimeChange)} header>
           <ReactEcharts
             option={dynamicChartOptions}
             notMerge={true}

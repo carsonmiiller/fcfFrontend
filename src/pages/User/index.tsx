@@ -5,7 +5,12 @@ import { BrowserRouterProps } from 'react-router-dom';
 import ReactEcharts from 'echarts-for-react';
 import { TEAMS } from './consts';
 import { visitData } from './chart';
+import ProductA from 'assets/svg/assets-product-1.svg?component';
+import ProductB from 'assets/svg/assets-product-2.svg?component';
+import ProductC from 'assets/svg/assets-product-3.svg?component';
+import ProductD from 'assets/svg/assets-product-4.svg?component';
 import useDynamicChart from 'hooks/useDynamicChart';
+
 import styles from './index.module.less';
 
 const { ListItem, ListItemMeta } = List;
@@ -21,7 +26,7 @@ const User: React.FC<BrowserRouterProps> = () => {
           <Card className={styles.welcome}>
             <Row justify='space-between'>
               <Col className={styles.name}>
-                Hi Admin! <span className={styles.regular}>Good afternoon, today is your 100th day with this website.</span> {/* Change this to real time data*/}
+                Hi! <span className={styles.regular}>Good afternoon, today is your 100th day with this website.</span>
               </Col>
             </Row>
           </Card>
@@ -46,9 +51,13 @@ const User: React.FC<BrowserRouterProps> = () => {
               </Col>
             </Row>
             <Row gutter={[16, 16]}>
-            <Col span={3}>
-                <div className={styles.label}>Management Company</div>
-                <div className={styles.value}>University of Wisconsin-Madison</div>
+              <Col span={3}>
+                <div className={styles.label}>Management Subjects</div>
+                <div className={styles.value}>Richie Company</div>
+              </Col>
+              <Col span={3}>
+                <div className={styles.label}>Immediate supervisor</div>
+                <div className={styles.value}>Michael Wang</div>
               </Col>
               <Col span={3}>
                 <div className={styles.label}>Role</div>
@@ -56,7 +65,7 @@ const User: React.FC<BrowserRouterProps> = () => {
               </Col>
               <Col span={3}>
                 <div className={styles.label}>Onboarding Date</div>
-                <div className={styles.value}>2021-07-01</div> {/* Change this to real time data*/}
+                <div className={styles.value}>2021-07-01</div>
               </Col>
             </Row>
           </Card>
@@ -89,6 +98,31 @@ const User: React.FC<BrowserRouterProps> = () => {
                 </ListItem>
               ))}
             </List>
+          </Card>
+          <Card
+            title='Service Products'
+            className={styles.product}
+            header
+            actions={
+              <Button shape='square' theme='default' variant='text'>
+                <IconFont name='edit' />
+              </Button>
+            }
+          >
+            <Row gutter={32}>
+              <Col span={3}>
+                <ProductA />
+              </Col>
+              <Col span={3}>
+                <ProductB />
+              </Col>
+              <Col span={3}>
+                <ProductC />
+              </Col>
+              <Col span={3}>
+                <ProductD />
+              </Col>
+            </Row>
           </Card>
         </Col>
       </Row>

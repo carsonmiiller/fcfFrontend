@@ -1,9 +1,10 @@
 import React, { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button, Popup, Dropdown, Row, Col } from 'tdesign-react';
+import { Button, Popup, Badge, Dropdown, Row, Col } from 'tdesign-react';
 import {
   Icon,
   LogoGithubIcon,
+  MailIcon,
   HelpCircleIcon,
   SettingIcon,
   PoweroffIcon,
@@ -21,7 +22,7 @@ export default memo(() => {
   const navigate = useNavigate();
 
   const gotoWiki = () => {
-    window.open('https://docs.google.com/document/d/1Agm1aaQD4c1zqJwlJgBnIhYMeeniRpNd/edit?mode=html');
+    window.open('https://github.com/arunike');
   };
 
   const gotoGitHub = () => {

@@ -24,7 +24,7 @@ export default memo(() => {
       <div className={Style.loginContainer}>
         <div className={Style.titleContainer}>
           <h1 className={Style.title}>Login to</h1>
-          <h1 className={Style.title}>Five Course Feeder</h1>
+          <h1 className={Style.title}>Richie code</h1>
           <div className={Style.subTitle}>
             <p className={classNames(Style.tip, Style.registerTip)}>
               {type === 'register' ? 'Already have an account?' : "Don't have an account?"}

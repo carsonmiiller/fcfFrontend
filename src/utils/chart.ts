@@ -1,3 +1,4 @@
+// 获取 chart 的 mock 数据
 import dayjs, { Dayjs } from 'dayjs';
 
 const RECENT_7_DAYS: [Dayjs, Dayjs] = [dayjs().subtract(7, 'day'), dayjs().subtract(1, 'day')];
