@@ -13,7 +13,7 @@ const Footer = () => {
 
   return (
     <TFooter>
-      <Row justify='center'>Copyright @ 2023-2023 Richie. All Rights Reserved</Row>
+      <Row justify='center'>Copyright @ 2023 Richie. All Rights Reserved</Row>
     </TFooter>
   );
 };
