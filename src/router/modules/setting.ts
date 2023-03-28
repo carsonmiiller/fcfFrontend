@@ -23,3 +23,5 @@ const result: IRouter[] = [
 ];
 
 export default result;
+
+// https://react-icons.github.io/react-icons/icons?name=sl
