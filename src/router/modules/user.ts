@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { UserCircleIcon } from 'tdesign-icons-react';
+import { SlPeople } from "react-icons/sl";
 import { IRouter } from '../index';
 
 const result: IRouter[] = [
@@ -7,7 +7,7 @@ const result: IRouter[] = [
     path: '/user',
     meta: {
       title: 'Profile Page',
-      Icon: UserCircleIcon,
+      Icon: SlPeople,
     },
     children: [
       {

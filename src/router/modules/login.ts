@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { LogoutIcon } from 'tdesign-icons-react';
+import { SlLogin } from "react-icons/sl";
 import { IRouter } from '../index';
 
 const result: IRouter[] = [
@@ -7,7 +7,7 @@ const result: IRouter[] = [
     path: '/login',
     meta: {
       title: 'Login Page',
-      Icon: LogoutIcon,
+      Icon: SlLogin,
     },
     children: [
       {

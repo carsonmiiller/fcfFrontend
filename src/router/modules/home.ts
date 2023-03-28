@@ -1,16 +1,16 @@
 import { lazy } from 'react';
-import { LogoutIcon } from 'tdesign-icons-react';
 import { IRouter } from '../index';
+import { SlHome } from "react-icons/sl";
 
 const result: IRouter[] = [
-  {
+{
     path: '/home',
     meta: {
       title: 'Home Page',
-      Icon: LogoutIcon,
+      Icon: SlHome,
     },
     children: [
-      {
+    {
         path: 'index',
         Component: lazy(() => import('pages/Home')),
         isFullPage: true,
@@ -19,7 +19,7 @@ const result: IRouter[] = [
         },
       },
     ],
-  },
+},
 ];
 
 export default result;

@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { DashboardIcon } from 'tdesign-icons-react';
+import { SlSpeedometer } from "react-icons/sl";
 import { IRouter } from '../index';
 
 const dashboard: IRouter[] = [
@@ -7,7 +7,7 @@ const dashboard: IRouter[] = [
     path: '/dashboard',
     meta: {
       title: 'Statistical Reports',
-      Icon: DashboardIcon,
+      Icon: SlSpeedometer,
     },
     children: [
       {
