@@ -27,7 +27,7 @@ export default function Login() {
 
         MessagePlugin.success('Login successfully');
 
-        navigate('/dashboard/base');
+        navigate('/home/index');
       } catch (e) {
         console.log(e);
         MessagePlugin.error('Login failed');

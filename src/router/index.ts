@@ -31,10 +31,10 @@ const routes: IRouter[] = [
   },
   {
     path: '/',
-    redirect: '/dashboard/base',
+    redirect: '/home/index',
   },
 ];
 
-const allRoutes = [...routes, ...dashboard, ...user, ...login, ...home, ...otherRoutes];
+const allRoutes = [...routes, ...home, ...dashboard, ...user, ...login, ...otherRoutes];
 
 export default allRoutes;
