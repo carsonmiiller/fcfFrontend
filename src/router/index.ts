@@ -1,9 +1,11 @@
 import React, { lazy } from 'react';
 import { BrowserRouterProps } from 'react-router-dom';
-import dashboard from './modules/dashboard';
+import statistic from './modules/statistic';
 import user from './modules/user';
 import login from './modules/login';
 import home from './modules/home';
+import setting from './modules/setting';
+import model_correction from './modules/model_correction';
 import otherRoutes from './modules/others';
 
 export interface IRouter {
@@ -35,6 +37,6 @@ const routes: IRouter[] = [
   },
 ];
 
-const allRoutes = [...routes, ...home, ...dashboard, ...user, ...login, ...otherRoutes];
+const allRoutes = [...routes, ...home, ...statistic, ...setting, ...model_correction, ...user, ...login, ...otherRoutes];
 
 export default allRoutes;

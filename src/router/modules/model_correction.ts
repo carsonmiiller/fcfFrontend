@@ -1,23 +1,23 @@
 import { lazy } from 'react';
 import { IRouter } from '../index';
-import { AiFillHome } from 'react-icons/ai';
+import { SlEnergy } from "react-icons/sl";
 
 const result: IRouter[] = [
 {
-    path: '/feeder',
+    path: '/model_correction',
     meta: {
-        title: 'Feeder Page',
-        Icon: AiFillHome,
+      title: 'Model Correction Page',
+      Icon: SlEnergy,
     },
     children: [
     {
         path: 'index',
-        Component: lazy(() => import('pages/Feeder')),
+        Component: lazy(() => import('pages/model_correction')),
         isFullPage: true,
         meta: {
-            title: 'Feeder Page',
+          title: 'Model Correction Page',
         },
-    },
+      },
     ],
 },
 ];
