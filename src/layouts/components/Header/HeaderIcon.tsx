@@ -68,7 +68,7 @@ export default memo(() => {
             <DropdownItem value={1}>
               <>
                 <UserCircleIcon />
-                Personal Center
+                Profile
               </>
             </DropdownItem>
             <DropdownItem value={1} onClick={handleLogout}>
