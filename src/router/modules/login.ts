@@ -6,7 +6,7 @@ const result: IRouter[] = [
   {
     path: '/login',
     meta: {
-      title: 'Login Page',
+      title: 'Logout',
       Icon: SlLogin,
     },
     children: [
@@ -15,7 +15,7 @@ const result: IRouter[] = [
         Component: lazy(() => import('pages/Login')),
         isFullPage: true,
         meta: {
-          title: 'Login Center',
+          title: 'Logout',
         },
       },
     ],
