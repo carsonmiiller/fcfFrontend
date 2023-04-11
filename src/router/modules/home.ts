@@ -13,7 +13,6 @@ const result: IRouter[] = [
     {
         path: 'index',
         Component: lazy(() => import('pages/Home')),
-        isFullPage: true,
         meta: {
           title: 'Home Page',
         },
