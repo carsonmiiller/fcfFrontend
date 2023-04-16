@@ -14,6 +14,7 @@ const MiddleChart = () => {
 
   const onTimeChange = (value: Array<string>) => {
     const options = getLineChartOptions(value);
+    console.log(options)
     setCustomOptions(options);
   };
 
@@ -31,12 +32,12 @@ const MiddleChart = () => {
   return (
     <Row gutter={[16, 16]} className={Style.middleChartPanel}>
       <Col xs={12} xl={9}>
-        <Card title='Statistic Data' subtitle='(Ten Thousand of Dollars)' header actions={LastWeekDatePicker(onTimeChange)}>
+        <Card title='Bird Detection Data' header actions={LastWeekDatePicker(onTimeChange)}>
           <ReactEcharts option={dynamicLineChartOption} notMerge={true} lazyUpdate={false} />
         </Card>
       </Col>
       <Col xs={12} xl={3}>
-        <Card title='Sales Channels' header subtitle='2021-12'>
+        <Card title='Detection Pie Chart'>
           <ReactEcharts option={dynamicPieChartOption} notMerge={true} lazyUpdate={true} />
         </Card>
       </Col>

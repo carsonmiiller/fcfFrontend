@@ -24,7 +24,7 @@ const Overview = (): React.ReactElement => {
     <div className={Style.overviewPanel}>
       <Row>
         <Col xs={12} xl={9} span={12}>
-          <Card title=' Overview of inbound and outbound storage ' subtitle='(Pcs)' actions={LastWeekDatePicker(onTimeChange)} bordered={false}>
+          <Card title='Detection Bar Chart' actions={LastWeekDatePicker(onTimeChange)} bordered={false}>
             <ReactEcharts
               option={dynamicChartOption}
               notMerge={true}
@@ -33,7 +33,7 @@ const Overview = (): React.ReactElement => {
             />
           </Card>
         </Col>
-        <Col xs={12} xl={3} span={12}>
+        {/* <Col xs={12} xl={3} span={12}>
           <Card actions={<Button>Output Data</Button>} bordered={false}>
             <Row>
               <Col xl={12} xs={6} span={12}>
@@ -58,7 +58,7 @@ const Overview = (): React.ReactElement => {
               </Col>
             </Row>
           </Card>
-        </Col>
+        </Col> */}
       </Row>
     </div>
   );

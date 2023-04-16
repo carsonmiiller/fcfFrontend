@@ -1,4 +1,7 @@
 import dayjs, { Dayjs } from 'dayjs';
+import { BIRD_DETECTION_DATA } from 'pages/Statistic/Base/constant';
+import { groubBy } from './data';
+import { divide, groupBy } from 'lodash';
 
 const RECENT_7_DAYS: [Dayjs, Dayjs] = [dayjs().subtract(7, 'day'), dayjs().subtract(1, 'day')];
 export const ONE_WEEK_LIST = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
@@ -35,3 +38,71 @@ export const getChartDataSet = (dateTime: Array<string> = [], divideNum = 10): C
 
   return [timeArray, inArray, outArray];
 };
+
+// function that reads bird stats data over given datetime and produces chart data
+export const getDetectionDataSet = (dateTime: Array<string> = []): ChartValue[][] => {
+  
+  ///////////////////////////////////////////////////////////////
+  // TO DO: ask database for all detections in specified date range
+  //
+  // const data = getDetectionDataFromDatabase(dateTime: Array<string> = [])
+  //
+  // using mock data in the meantime
+  const data = BIRD_DETECTION_DATA
+  ///////////////////////////////////////////////////////////////
+  
+  // separating out time and prediction arrays
+  const time = data.map((item) => item.timeStamp)
+  const predicted = data.map((item) => item.prediction)
+
+  // setting empty arrays for each bird species
+  var cardinal = []
+  var blueJay = []
+  var sparrow = []
+  var robin = []
+  var finch = []
+  var hummingBird = []
+  var hawk = []
+
+  // creating detection timeseries array for each bird species
+  for(let i = 0; i < predicted.length; i++){
+    predicted[i] === 'Cardinal' ? cardinal.push(1) : cardinal.push(0)
+    predicted[i] === 'Blue_Jay' ? blueJay.push(1) : blueJay.push(0)
+    predicted[i] === 'Sparrow' ? sparrow.push(1) : sparrow.push(0)
+    predicted[i] === 'Robin' ? robin.push(1) : robin.push(0)
+    predicted[i] === 'Finch' ? finch.push(1) : finch.push(0)
+    predicted[i] === 'Humming_Bird' ? hummingBird.push(1) : hummingBird.push(0)
+    predicted[i] === 'Hawk' ? hawk.push(1) : hawk.push(0)
+  }
+
+  // return datetime array and the bird species detected at each timestamp
+  return[time, cardinal, blueJay, sparrow, robin, finch, hummingBird, hawk]
+};
+
+export const getPieDetectionDataSet = (dateTime: Array<string> = []) => {
+  
+  ///////////////////////////////////////////////////////////////
+  // TO DO: ask database for all detections in specified date range
+  //
+  // const data = getDetectionDataFromDatabase()
+  //
+  // using mock data in the meantime
+  const data = BIRD_DETECTION_DATA
+  ///////////////////////////////////////////////////////////////
+
+  // separate out data for each group of birds
+  const groupedData = groupBy(BIRD_DETECTION_DATA, 'prediction')
+
+  // setting empty arrays for each bird species
+  var cardinal = groupedData.Cardinal.length
+  var blueJay = groupedData.Blue_Jay.length
+  var sparrow = groupedData.Sparrow.length
+  var robin = groupedData.Robin.length
+  var finch = groupedData.Finch.length
+  var hummingBird = groupedData.Humming_Bird.length
+  var hawk = groupedData.Hawk.length
+
+  // return datetime array and the bird species detected at each timestamp
+  return[cardinal, blueJay, sparrow, robin, finch, hummingBird, hawk]
+};
+

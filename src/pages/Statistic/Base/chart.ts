@@ -1,8 +1,9 @@
 import type { EChartOption } from 'echarts';
-import { getChartDataSet, ONE_WEEK_LIST } from 'utils/chart';
+import { getChartDataSet, getDetectionDataSet, getPieDetectionDataSet, ONE_WEEK_LIST } from 'utils/chart';
 
 export const getLineChartOptions = (dateTime: Array<string> = []): EChartOption => {
-  const [timeArray, inArray, outArray] = getChartDataSet(dateTime);
+  //const [timeArray, inArray, outArray] = getChartDataSet(dateTime);
+  const [time, cardinal, blueJay, sparrow, robin, finch, hummingBird, hawk] = getDetectionDataSet(dateTime)
   return {
     tooltip: {
       trigger: 'item',
@@ -18,14 +19,14 @@ export const getLineChartOptions = (dateTime: Array<string> = []): EChartOption 
       left: 'center',
       bottom: '0',
       orient: 'horizontal',
-      data: ['This Month', 'Last Month'],
+      data: ['Cardinal', 'Humming Bird', 'Blue Jay', 'Sparrow', 'Robin', 'Finch', 'Hawk'],
       textStyle: {
         fontSize: 12,
       },
     },
     xAxis: {
       type: 'category',
-      data: timeArray,
+      data: time,
       boundaryGap: false,
       axisLine: {
         lineStyle: {
@@ -39,8 +40,8 @@ export const getLineChartOptions = (dateTime: Array<string> = []): EChartOption 
     },
     series: [
       {
-        name: 'This Month',
-        data: outArray,
+        name: 'Cardinal',
+        data: cardinal,
         type: 'line',
         smooth: false,
         showSymbol: true,
@@ -49,13 +50,70 @@ export const getLineChartOptions = (dateTime: Array<string> = []): EChartOption 
         itemStyle: {
           borderWidth: 1,
         },
-        areaStyle: {
-          color: '#0053D92F',
+      },
+      {
+        name: 'Humming Bird',
+        data: hummingBird,
+        type: 'line',
+        smooth: false,
+        showSymbol: true,
+        symbol: 'circle',
+        symbolSize: 8,
+        itemStyle: {
+          borderWidth: 1,
         },
       },
       {
-        name: 'Last Month',
-        data: inArray,
+        name: 'Blue Jay',
+        data: blueJay,
+        type: 'line',
+        smooth: false,
+        showSymbol: true,
+        symbol: 'circle',
+        symbolSize: 8,
+        itemStyle: {
+          borderWidth: 1,
+        },
+      },
+      {
+        name: 'Sparrow',
+        data: sparrow,
+        type: 'line',
+        smooth: false,
+        showSymbol: true,
+        symbol: 'circle',
+        symbolSize: 8,
+        itemStyle: {
+          borderWidth: 1,
+        },
+      },
+      {
+        name: 'Robin',
+        data: robin,
+        type: 'line',
+        smooth: false,
+        showSymbol: true,
+        symbol: 'circle',
+        symbolSize: 8,
+        itemStyle: {
+          borderWidth: 1,
+        },
+      },
+      {
+        name: 'Finch',
+        data: finch,
+        type: 'line',
+        smooth: false,
+        showSymbol: true,
+        symbol: 'circle',
+        symbolSize: 8,
+        itemStyle: {
+          borderWidth: 1,
+        },
+      },
+      {
+        name: 'Hawk',
+        data: hawk,
         type: 'line',
         smooth: false,
         showSymbol: true,
@@ -69,71 +127,79 @@ export const getLineChartOptions = (dateTime: Array<string> = []): EChartOption 
   };
 };
 
-export const getPieChartOptions = (radius = 42): EChartOption => ({
-  tooltip: {
-    trigger: 'item',
-  },
-  grid: {
-    top: '0',
-    right: '0',
-  },
-  legend: {
-    itemWidth: 12,
-    itemHeight: 4,
-    textStyle: {
-      fontSize: 12,
+export const getPieChartOptions = (dateTime: Array<string> = [], radius = 42): EChartOption => {
+  const [cardinal, blueJay, sparrow, robin, finch, hummingBird, hawk] = getPieDetectionDataSet(dateTime)
+  return {
+    tooltip: {
+      trigger: 'item',
     },
-    left: 'center',
-    bottom: '0',
-    orient: 'horizontal',
-  },
-  series: [
-    {
-      name: 'Sales channels',
-      type: 'pie',
-      radius: ['48%', '60%'],
-      avoidLabelOverlap: false,
-      silent: true,
-      itemStyle: {
-        borderWidth: 1,
+    grid: {
+      top: '0',
+      right: '0',
+    },
+    legend: {
+      itemWidth: 12,
+      itemHeight: 4,
+      textStyle: {
+        fontSize: 12,
       },
-      label: {
-        show: true,
-        position: 'center',
-        formatter: ['{value|{d}%}', '{name|{b}Channel Share}'].join('\n'),
-        rich: {
-          value: {
-            fontSize: 28,
-            fontWeight: 'normal',
-            lineHeight: 46,
-          },
-          name: {
-            color: '#909399',
-            fontSize: 12,
-            lineHeight: 14,
-          },
+      left: 'center',
+      bottom: '0',
+      orient: 'horizontal',
+    },
+    series: [
+      {
+        name: 'Detected Species',
+        type: 'pie',
+        radius: ['48%', '60%'],
+        avoidLabelOverlap: false,
+        silent: true,
+        itemStyle: {
+          borderWidth: 1,
         },
+        // label: {
+        //   show: true,
+        //   position: 'center',
+        //   formatter: ['{value|{d}%}', '{name|{b}Channel Share}'].join('\n'),
+        //   rich: {
+        //     value: {
+        //       fontSize: 28,
+        //       fontWeight: 'normal',
+        //       lineHeight: 46,
+        //     },
+        //     name: {
+        //       color: '#909399',
+        //       fontSize: 12,
+        //       lineHeight: 14,
+        //     },
+        //   },
+        // },
+        labelLine: {
+          show: false,
+        },
+        data: [
+          { value: cardinal, name: 'Cardinal' },
+          { value: blueJay, name: 'Blue Jay' },
+          { value: sparrow, name: 'Sparrow' },
+          { value: robin, name: 'Robin' },
+          { value: finch, name: 'Finch' },
+          { value: hummingBird, name: 'Humming Bird' },
+          { value: hawk, name: 'Hawk' },
+        ],
       },
-      labelLine: {
-        show: false,
-      },
-      data: [
-        { value: 1048, name: 'Online' },
-        { value: radius * 7, name: 'In Store' },
-      ],
-    },
-  ],
-});
-
+    ],
+  }
+}
 export const getBarChartOptions = (dateTime: Array<string> = []): EChartOption => {
   const [timeArray, inArray, outArray] = getChartDataSet(dateTime);
+  const [time, cardinal, blueJay, sparrow, robin, finch, hummingBird, hawk] = getDetectionDataSet(dateTime)
   return {
     tooltip: {
       trigger: 'item',
     },
     xAxis: {
       type: 'category',
-      data: timeArray,
+      data: time,
       axisLine: {
         lineStyle: {
           width: 1,
@@ -153,7 +219,7 @@ export const getBarChartOptions = (dateTime: Array<string> = []): EChartOption =
       icon: 'rect',
       itemWidth: 12,
       itemHeight: 4,
-      itemGap: 48,
+      itemGap: 5,
       textStyle: {
         fontSize: 12,
         color: 'rgba(0, 0, 0, 0.6)',
@@ -161,17 +227,42 @@ export const getBarChartOptions = (dateTime: Array<string> = []): EChartOption =
       left: 'center',
       bottom: '0',
       orient: 'horizontal',
-      data: ['This Month', 'Last Month'],
+      data: ['Cardinal', 'Humming Bird', 'Blue Jay', 'Sparrow', 'Robin', 'Finch', 'Hawk'],
     },
     series: [
       {
-        name: 'This Month',
-        data: outArray,
+        name: 'Cardinal',
+        data: cardinal,
         type: 'bar',
       },
       {
-        name: 'Last Month',
-        data: inArray,
+        name: 'Humming Bird',
+        data: hummingBird,
+        type: 'bar',
+      },
+      {
+        name: 'Blue Jay',
+        data: blueJay,
+        type: 'bar',
+      },
+      {
+        name: 'Sparrow',
+        data: sparrow,
+        type: 'bar',
+      },
+      {
+        name: 'Robin',
+        data: robin,
+        type: 'bar',
+      },
+      {
+        name: 'Finch',
+        data: finch,
+        type: 'bar',
+      },
+      {
+        name: 'Hawk',
+        data: hawk,
         type: 'bar',
       },
     ],
