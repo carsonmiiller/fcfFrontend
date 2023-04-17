@@ -1,8 +1,6 @@
 import React, { memo } from 'react';
-import { Row, Col, Button, List, Card } from 'tdesign-react';
+import { Row, Col } from 'react-bootstrap';
 import { BrowserRouterProps } from 'react-router-dom';
-
-const { ListItem, ListItemMeta } = List;
 
 const Home: React.FC<BrowserRouterProps> = () => {
   return (

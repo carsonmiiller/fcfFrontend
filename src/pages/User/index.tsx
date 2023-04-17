@@ -5,10 +5,6 @@ import { BrowserRouterProps } from 'react-router-dom';
 import ReactEcharts from 'echarts-for-react';
 import { TEAMS } from './consts';
 import { visitData } from './chart';
-import ProductA from 'assets/svg/assets-product-1.svg?component';
-import ProductB from 'assets/svg/assets-product-2.svg?component';
-import ProductC from 'assets/svg/assets-product-3.svg?component';
-import ProductD from 'assets/svg/assets-product-4.svg?component';
 import useDynamicChart from 'hooks/useDynamicChart';
 
 import styles from './index.module.less';
@@ -98,31 +94,6 @@ const User: React.FC<BrowserRouterProps> = () => {
                 </ListItem>
               ))}
             </List>
-          </Card>
-          <Card
-            title='Service Products'
-            className={styles.product}
-            header
-            actions={
-              <Button shape='square' theme='default' variant='text'>
-                <IconFont name='edit' />
-              </Button>
-            }
-          >
-            <Row gutter={32}>
-              <Col span={3}>
-                <ProductA />
-              </Col>
-              <Col span={3}>
-                <ProductB />
-              </Col>
-              <Col span={3}>
-                <ProductC />
-              </Col>
-              <Col span={3}>
-                <ProductD />
-              </Col>
-            </Row>
           </Card>
         </Col>
       </Row>

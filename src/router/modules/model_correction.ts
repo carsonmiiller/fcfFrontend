@@ -12,10 +12,9 @@ const result: IRouter[] = [
     children: [
     {
         path: 'index',
-        Component: lazy(() => import('pages/model_correction')),
-        isFullPage: true,
+        Component: lazy(() => import('pages/Model_Correction')),
         meta: {
-          title: 'Model Correction Page',
+          title: 'Machine Learning Model',
         },
       },
     ],

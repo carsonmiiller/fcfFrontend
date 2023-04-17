@@ -4,7 +4,7 @@ import { SlWrench } from "react-icons/sl";
 
 const result: IRouter[] = [
 {
-    path: '/Setting',
+    path: '/setting',
     meta: {
         title: 'Setting Page',
         Icon: SlWrench,
@@ -13,9 +13,8 @@ const result: IRouter[] = [
     {
         path: 'index',
         Component: lazy(() => import('pages/Setting')),
-        isFullPage: true,
         meta: {
-            title: 'Setting Page',
+            title: 'Setting',
         },
     },
     ],
@@ -23,5 +22,6 @@ const result: IRouter[] = [
 ];
 
 export default result;
+
 
 // https://react-icons.github.io/react-icons/icons?name=sl
