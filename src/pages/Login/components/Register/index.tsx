@@ -75,7 +75,7 @@ export default function Register() {
         </FormItem>
         <FormItem>
           <Button block size='large' type='submit'>
-            注册
+            Register
           </Button>
         </FormItem>
         <div className={Style.switchContainer}>
