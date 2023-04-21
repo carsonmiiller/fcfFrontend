@@ -5,7 +5,6 @@ import { LockOnIcon, UserIcon, BrowseOffIcon, BrowseIcon} from 'tdesign-icons-re
 import classnames from 'classnames';
 import { useAppDispatch } from 'modules/store';
 import { login } from 'modules/user';
-import { ChangeEvent } from 'react';
 
 import Style from './index.module.less';
 
@@ -34,14 +33,6 @@ export default function Login() {
       method: 'GET',
       });
       return response.json();
-  };
-
-  const onUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setUsername(e.target.value);
-  };
-
-  const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
   };
 
   const onSubmit = async (e: SubmitContext) => {
@@ -81,7 +72,7 @@ export default function Login() {
                 clearable
                 placeholder='Please enter the login account: admin' 
                 value={username} 
-                onChange={(value: InputValue) => setUsername(value)} 
+                onChange={(value: InputValue) => setUsername(value)}
                 prefixIcon={<UserIcon />} 
                 />
             </FormItem>
