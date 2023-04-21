@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Form, MessagePlugin, Input, Checkbox, Button, FormInstanceFunctions, SubmitContext } from 'tdesign-react';
+import { Form, MessagePlugin, Input, Checkbox, Button, FormInstanceFunctions, SubmitContext, InputValue } from 'tdesign-react';
 import { LockOnIcon, UserIcon, BrowseOffIcon, BrowseIcon} from 'tdesign-icons-react';
 import classnames from 'classnames';
 import { useAppDispatch } from 'modules/store';
 import { login } from 'modules/user';
+import { ChangeEvent } from 'react';
 
 import Style from './index.module.less';
 
@@ -18,8 +19,8 @@ export default function Login() {
   const formRef = useRef<FormInstanceFunctions>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const [username, setUsername] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+  const [username, setUsername] = useState<any>('');
+  const [password, setPassword] = useState<any>('');
 
   /////////////////////////////////////////////////////////////////////////////////////////////
   //                                                                                         //
@@ -29,13 +30,13 @@ export default function Login() {
   //                                                                                         //
   /////////////////////////////////////////////////////////////////////////////////////////////
   const handleLogin = async () => {
-    const response = await window.fetch('http://localhost:8080/api/v1/users/login/{username}/{password}', {
+    const response = await fetch('http://localhost:8080/api/v1/users/login/{username}/{password}', {
       method: 'GET',
       });
       return response.json();
   };
 
-  const onUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
   };
 
@@ -75,14 +76,23 @@ export default function Login() {
         {loginType === 'password' && (
           <>
             <FormItem name='account' rules={[{ required: true, message: 'Username Required', type: 'error' }]}>
-              <Input size='large' placeholder='Please enter the login username: admin' value={username} onChange={onUsernameChange} prefixIcon={<UserIcon />}></Input>
+              <Input 
+                size='large'
+                clearable
+                placeholder='Please enter the login account: admin' 
+                value={username} 
+                onChange={(value: InputValue) => setUsername(value)} 
+                prefixIcon={<UserIcon />} 
+                />
             </FormItem>
-            <FormItem name='password' rules={[{ required: true, message: 'Password required', type: 'error' }]}>
+            <FormItem name='password' rules={[{ required: true, message: 'Password required', type: 'error' }]} >
               <Input
                 size='large'
-                type={showPsw ? 'text' : 'password'}
                 clearable
+                type={showPsw ? 'text' : 'password'}
                 placeholder='Please enter the login password: admin'
+                value={password}
+                onChange={(value: InputValue) => setPassword(value)}
                 prefixIcon={<LockOnIcon />}
                 suffixIcon={
                   showPsw ? (
