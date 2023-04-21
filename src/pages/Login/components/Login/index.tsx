@@ -18,6 +18,30 @@ export default function Login() {
   const formRef = useRef<FormInstanceFunctions>();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  //                                                                                         //
+  // TODO: use api to login                                                                  //
+  // CONSULT WITH RICHIE/KEEGAN ON TYPESCRIPT SYNTAX FOR THIS FUNCTION                       //            
+  // SHOULD BE SIMPLE POST REQUEST, WITH HTTP STATUS RESPONSE INDICATING SUCCESS OR FAILURE  //
+  //                                                                                         //
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  const handleLogin = async () => {
+    const response = await window.fetch('http://localhost:8080/api/v1/users/login/{username}/{password}', {
+      method: 'GET',
+      });
+      return response.json();
+  };
+
+  const onUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(e.target.value);
+  };
+
+  const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  };
 
   const onSubmit = async (e: SubmitContext) => {
     if (e.validateResult === true) {
@@ -51,7 +75,7 @@ export default function Login() {
         {loginType === 'password' && (
           <>
             <FormItem name='account' rules={[{ required: true, message: 'Username Required', type: 'error' }]}>
-              <Input size='large' placeholder='Please enter the login username: admin' prefixIcon={<UserIcon />}></Input>
+              <Input size='large' placeholder='Please enter the login username: admin' value={username} onChange={onUsernameChange} prefixIcon={<UserIcon />}></Input>
             </FormItem>
             <FormItem name='password' rules={[{ required: true, message: 'Password required', type: 'error' }]}>
               <Input

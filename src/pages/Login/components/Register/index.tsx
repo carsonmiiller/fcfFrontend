@@ -16,6 +16,24 @@ export default function Register() {
   const { countdown, setupCountdown } = useCountdown(60);
   const formRef = useRef<FormInstanceFunctions>();
 
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  //                                                                                         //
+  // TODO: use api to register                                                               //
+  // CONSULT WITH RICHIE/KEEGAN ON TYPESCRIPT SYNTAX FOR THIS FUNCTION                       //            
+  // SHOULD BE SIMPLE POST REQUEST, WITH HTTP STATUS RESPONSE INDICATING SUCCESS OR FAILURE  //
+  //                                                                                         //
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  /*const handleRegister = async (values: any) => {
+    const response = await window.fetch('http://localhost:8080/api/v1/users/register/{username}/{password}/{firstName}/{lastName}', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        },
+      body: JSON.stringify(values),
+      });
+      return response.json();
+  };*/
+
   const onSubmit = (e: SubmitContext) => {
     if (e.validateResult === true) {
       const { checked } = formRef.current?.getFieldsValue?.(['checked']) as { checked: boolean };
@@ -40,18 +58,17 @@ export default function Register() {
         labelWidth={0}
         onSubmit={onSubmit}
       >
+        <FormItem name='firstName' rules={[{ required: true, message: 'First name required', type: 'error' }]}>
+          <Input size='large' type='text' placeholder='First name' prefixIcon={<UserIcon />} />
+        </FormItem>
 
-        {registerType === 'email' && (
-          <FormItem
-            name='email'
-            rules={[
-              { required: true, message: 'E-mail required', type: 'error' },
-              { email: true, message: 'Please enter the correct email address', type: 'warning' },
-            ]}
-          >
-            <Input type='text' size='large' placeholder='Please enter your email address' prefixIcon={<MailIcon />} />
-          </FormItem>
-        )}
+        <FormItem name='lastName' rules={[{ required: true, message: 'Last name required', type: 'error' }]}>
+          <Input size='large' type='text' placeholder='Last name' prefixIcon={<UserIcon />} />
+        </FormItem>
+
+        <FormItem name='username' rules={[{ required: true, message: 'Username required', type: 'error' }]}>
+          <Input size='large' type='text' placeholder='Username' prefixIcon={<UserIcon />} />
+        </FormItem>
 
         <FormItem name='password' rules={[{ required: true, message: 'Password required', type: 'error' }]}>
           <Input
@@ -75,7 +92,7 @@ export default function Register() {
         </FormItem>
         <FormItem>
           <Button block size='large' type='submit'>
-            注册
+            Register
           </Button>
         </FormItem>
         <div className={Style.switchContainer}>
