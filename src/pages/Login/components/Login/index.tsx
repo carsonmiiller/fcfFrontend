@@ -21,18 +21,28 @@ export default function Login() {
   const [username, setUsername] = useState<any>('');
   const [password, setPassword] = useState<any>('');
 
-  /////////////////////////////////////////////////////////////////////////////////////////////
-  //                                                                                         //
-  // TODO: use api to login                                                                  //
-  // CONSULT WITH RICHIE/KEEGAN ON TYPESCRIPT SYNTAX FOR THIS FUNCTION                       //            
-  // SHOULD BE SIMPLE POST REQUEST, WITH HTTP STATUS RESPONSE INDICATING SUCCESS OR FAILURE  //
-  //                                                                                         //
-  /////////////////////////////////////////////////////////////////////////////////////////////
   const handleLogin = async () => {
-    const response = await fetch('http://localhost:8080/api/v1/users/login/${username}/${password}', {
+    // Need Chrome Extension CORS Unblock to work
+    await fetch(`http://localhost:8080/api/v1/users/login/${username}/${password}`, {
       method: 'GET',
-      });
-      return response.json();
+      headers: {
+      }
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          return response.text();
+        }
+        else {
+          throw new Error('Login failed');
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        if(data === "success")
+          navigate('/home/index');
+        return data;
+      }
+    );
   };
 
   const onSubmit = async (e: SubmitContext) => {
@@ -62,7 +72,7 @@ export default function Login() {
         ref={formRef}
         className={classnames(Style.itemContainer, `login-${loginType}`)}
         labelWidth={0}
-        onSubmit={onSubmit}
+        onSubmit={handleLogin}
       >
         {loginType === 'password' && (
           <>
