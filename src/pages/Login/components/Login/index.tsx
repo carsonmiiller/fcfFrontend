@@ -30,7 +30,7 @@ export default function Login() {
   //                                                                                         //
   /////////////////////////////////////////////////////////////////////////////////////////////
   const handleLogin = async () => {
-    const response = await fetch('http://localhost:8080/api/v1/users/login/{username}/{password}', {
+    const response = await fetch('http://localhost:8080/api/v1/users/login/${username}/${password}', {
       method: 'GET',
       });
       return response.json();
