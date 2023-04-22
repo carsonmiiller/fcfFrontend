@@ -40,6 +40,10 @@ export default function Login() {
         console.log(data);
         if(data === "success")
           navigate('/home/index');
+        else if(data === "userDNE")
+          MessagePlugin.error('User does not exist');
+        else if(data === "wrong_password")
+          MessagePlugin.error('Wrong password');
         return data;
       }
     );
