@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Row, Card } from 'tdesign-react';
 import ReactEcharts from 'echarts-for-react';
 import useDynamicChart from 'hooks/useDynamicChart';
@@ -11,6 +11,25 @@ const pieOptions = getPieChartOptions();
 
 const MiddleChart = () => {
   const [customOptions, setCustomOptions] = useState(lineOptions);
+  const [stats, setStats] = useState<any>([]);
+
+  useEffect(() => {
+    fetch('http://localhost:8080/api/v1/stats/all', {
+      method: 'GET',
+      headers: {}
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        setStats(data)
+        console.log(data)
+        return data
+      }
+    )
+  }, []);
 
   const onTimeChange = (value: Array<string>) => {
     const options = getLineChartOptions(value);

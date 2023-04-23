@@ -23,7 +23,7 @@ export default function Register() {
   const [lastName, setLastName] = useState<any>('');
   const navigate = useNavigate();
 
-  const handleRegister= async () => {
+  const handleRegister = async () => {
     // Need Chrome Extension CORS Unblock to work
     await fetch(`http://localhost:8080/api/v1/users/register/${username}/${password}/${firstName}/${lastName}`, {
       method: 'GET',

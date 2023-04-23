@@ -10,6 +10,7 @@ import Style from './Overview.module.less';
 const options = getBarChartOptions();
 const Overview = (): React.ReactElement => {
   const [customOptions, setCustomOptions] = useState(options);
+
   const onTimeChange = (value: any) => {
     // eslint-disable-next-line no-shadow
     const options = getBarChartOptions(value);
